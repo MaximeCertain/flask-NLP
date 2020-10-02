@@ -31,7 +31,7 @@ def training_results():
     resultsTrainings = r.json()
 
     return render_template("index.html", title='Home', resultsTrainings=
-    resultsTrainings['Fiabilité de la machine'])
+    resultsTrainings['Fiabilité de la machine'], nbCorpusWords = resultsTrainings['nbCorpusWords'] )
 
 @app.route("/predict",methods=['POST'])
 def predict():
@@ -51,8 +51,9 @@ def train():
     #nettoie le corpus 
     Corpus['review_net']=Corpus['review'].apply(nettoyage)
     resultsTraining = initVectorizer(Corpus)
-    print(resultsTraining[1])
-    return jsonify({'Fiabilité de la machine': (round(resultsTraining[0], 2) * 100), 'nbCorpusWords':resultsTraining[1] })
+    nbMots = (resultsTraining[1])
+    print(nbMots)
+    return jsonify({'Fiabilité de la machine': (round(resultsTraining[0], 2) * 100), 'nbCorpusWords':nbMots })
 
 if __name__ == "__main__":
     app.run()

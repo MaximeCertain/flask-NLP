@@ -7,25 +7,28 @@
 
   </h1>
   <br>
-  <a href="http://127.0.0.1:5000/trainingResults">Entrainer mon modèle</a>
+  <a href="http://127.0.0.1:5000/trainingResults" style="display: block ruby;">Entrainer mon modèle</a> <br>
   {%if resultsTrainings %} 
     La machine a été entrainée, le coéfficient de fiabilité est de 
     <span style="font-style:bold; font-size:27px;"> 
       {{resultsTrainings}} %
    </span>
    <br>
-   <span> Il y a  nombre de mots dans le corpus d'entrainement {{nbCorpusWords}} </span> 
+   <span> Il y a <strong> {{nbCorpusWords}}</strong> nombre de mots dans le corpus d'entrainement </span> 
   {% endif %}
   <form action = "/result" method = "POST" style="width:600px;">
     <textarea type = "text" placeholder="Entrez votre texte ici" name = "input_text" rows="5" cols="33" />
     </textarea>
     
-    <p><input type = "submit" value = "submit" /></p>
+    <p><input type = "submit" value = "Enregistrer" /></p>
   </form>
   {% if avis %}
   <div style="margin-top: 100px;">
-    <h4>Le texte saisi : <span style="fond-bold:italic;"> {{ input_text }}   </span> est analysé comme cela :</h4>
-    <h4>c'est un {{avis}} pour une fiabilité à {{pourcentage}} % </h4>
+    <div>Le texte que vous aviez saisi :
+      <span style="fond-bold:bold;"> {{ input_text }} </span> 
+        est analysé comme cela :
+    </p>
+    <div>c'est un <span style="fond-bold:bold;"> {{avis}} </span> pour une fiabilité à <span style="fond-bold:bold;"> {{pourcentage}} </span> % </h4>
   </div>
 
   {% endif %}
