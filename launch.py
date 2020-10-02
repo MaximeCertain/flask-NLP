@@ -42,7 +42,7 @@ def predict():
     else:
         strAvis = "Avis Négatif"
 
-    return jsonify({'text_user':user_text, 'Résultat': strAvis, 'pourcentage de fiabilité': (predictResult[1]*100) })
+    return jsonify({'text_user':user_text, 'Résultat': strAvis, 'pourcentage de fiabilité': (round(predictResult[1], 2) * 100) })
 
 @app.route("/training",methods=['GET'])
 def train():
@@ -50,9 +50,9 @@ def train():
     Corpus = getTrainFromCsv("corpus.csv")
     #nettoie le corpus 
     Corpus['review_net']=Corpus['review'].apply(nettoyage)
-    coefFiabilite = initVectorizer(Corpus)
-    print(coefFiabilite)
-    return jsonify({'Fiabilité de la machine': (round(coefFiabilite, 2) * 100)})
+    resultsTraining = initVectorizer(Corpus)
+    print(resultsTraining[1])
+    return jsonify({'Fiabilité de la machine': (round(resultsTraining[0], 2) * 100), 'nbCorpusWords':resultsTraining[1] })
 
 if __name__ == "__main__":
     app.run()

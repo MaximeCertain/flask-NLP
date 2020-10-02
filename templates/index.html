@@ -13,8 +13,10 @@
     <span style="font-style:bold; font-size:27px;"> 
       {{resultsTrainings}} %
    </span>
+   <br>
+   <span> Il y a  nombre de mots dans le corpus d'entrainement {{nbCorpusWords}} </span> 
   {% endif %}
-  <form action = "/result" method = "POST">
+  <form action = "/result" method = "POST" style="width:600px;">
     <textarea type = "text" placeholder="Entrez votre texte ici" name = "input_text" rows="5" cols="33" />
     </textarea>
     
@@ -22,9 +24,10 @@
   </form>
   {% if avis %}
   <div style="margin-top: 100px;">
-    <h4>Donc ton texte : {{ input_text }}  est analysé comme cela :</h4>
+    <h4>Le texte saisi : <span style="fond-bold:italic;"> {{ input_text }}   </span> est analysé comme cela :</h4>
     <h4>c'est un {{avis}} pour une fiabilité à {{pourcentage}} % </h4>
   </div>
+
   {% endif %}
 
   {% if error %}
