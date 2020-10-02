@@ -8,7 +8,6 @@ app = Flask(__name__)
 def home():
     return render_template("index.html", title='Home')
 
-<<<<<<< HEAD
 @app.route("/yo",methods=['POST'])
 def predict():
     user_text = request.form.get('input_text')
@@ -24,7 +23,6 @@ def predict():
 @app.route("/training3",methods=['GET'])
 def training():
     return render_template("training.html", title='Training')
-=======
 @app.route("/result",methods=['POST'])
 def retour():
     user_text = request.form.get('input_text')
@@ -54,7 +52,6 @@ def train():
     coefFiabilite = initVectorizer(Corpus)
     print(coefFiabilite)
     return jsonify({'Fiabilité de la machine': str(coefFiabilite)})
->>>>>>> d26a2ca0ee094f3a36e42c60923b52d6f8252437
 
 
 @app.route("/test",methods=['POST'])
