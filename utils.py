@@ -40,7 +40,6 @@ def nettoyage(string):
 
 #entraine la machine, sauvegarde dans le cls.pkl et renvoie le score de fiabilité
 def initVectorizer(Corpus):
-
     vectorizer = TfidfVectorizer()  #initialise matrice tf idf 
     vectorizer.fit(Corpus['review_net']) #met en forme le vectorizer avec la nvlle colonne cleanée
     X=vectorizer.transform(Corpus['review_net'])
@@ -50,9 +49,9 @@ def initVectorizer(Corpus):
     cls=LogisticRegression(max_iter=300).fit(x_train,y_train)
 
     pickle.dump(cls,open("cls.pkl","wb"))
-    
-    return  (cls.score(x_val,y_val))
+    nbWords = (len(vectorizer.get_feature_names()))
 
+    return  [(cls.score(x_val,y_val)), nbWords]
 
 
 #on recupère les données d'entrainement depuis le csv et on les traite afin de savoir si l'avis est negatof ou positif
@@ -81,7 +80,6 @@ def predictSentiments(phrase):
     cls=pickle.load(open("cls.pkl", "rb"))
     #indicateur de fiabilité
     x = (cls.predict(user),cls.predict_proba(user).max())
-    print(x)
     return x
     
      

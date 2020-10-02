@@ -31,7 +31,7 @@ def training_results():
     resultsTrainings = r.json()
 
     return render_template("train.html", title='Train', resultsTrainings=
-    resultsTrainings['Fiabilité de la machine'])
+    resultsTrainings['Fiabilité de la machine'] , nbCorpusWords = resultsTrainings['nbCorpusWords'])
 
 @app.route("/predict",methods=['POST'])
 def predict():
@@ -42,7 +42,7 @@ def predict():
     else:
         strAvis = "Avis Négatif"
 
-    return jsonify({'text_user':user_text, 'Résultat': strAvis, 'pourcentage de fiabilité': (predictResult[1]*100) })
+    return jsonify({'text_user':user_text, 'Résultat': strAvis, 'pourcentage de fiabilité': (round(predictResult[1], 2) * 100) })
 
 @app.route("/training",methods=['GET'])
 def train():
@@ -50,9 +50,10 @@ def train():
     Corpus = getTrainFromCsv("corpus.csv")
     #nettoie le corpus 
     Corpus['review_net']=Corpus['review'].apply(nettoyage)
-    coefFiabilite = initVectorizer(Corpus)
-    print(coefFiabilite)
-    return jsonify({'Fiabilité de la machine': (round(coefFiabilite, 2) * 100)})
+    resultsTraining = initVectorizer(Corpus)
+    nbMots = (resultsTraining[1])
+    print(nbMots)
+    return jsonify({'Fiabilité de la machine': (round(resultsTraining[0], 2) * 100), 'nbCorpusWords':nbMots })
 
 if __name__ == "__main__":
     app.run()
