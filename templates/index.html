@@ -3,13 +3,15 @@
 {% block content %}
 
   <h1 >
-      Please fill in your inputs here jsnfk
+      Entrez votre texte ici à évaluer ici
 
-<<<<<<< HEAD
   </h1>
   <br>
-  <form action = "/prediction" method = "POST">
-    <p>Text <input type = "text" name = "input_text" style="font-size:18pt;height:120px;width:200px;"/></p>
+  <a href="http://127.0.0.1:5000/trainingResults">Entrainer mon modèle</a>
+  <form action = "/result" method = "POST">
+    <textarea type = "text" placeholder="Entrez votre texte ici" name = "input_text" rows="5" cols="33" />
+    </textarea>
+    
     <p><input type = "submit" value = "submit" /></p>
   </form>
   {% if error %}
@@ -17,23 +19,9 @@
   {% endif %}
   
   {% endblock %}
-=======
-      <h1 >
-         Please fill in your inputs
-
-      </h1>
-      <br>
-      <form action = "/result" method = "POST">
-   <p>Text <input type = "text" name = "input_text" style="font-size:18pt;height:120px;width:200px;"/></p>
-   <p><input type = "submit" value = "submit" /></p>
-</form>
-      {% if error %}
-        <p class="error"><strong>Error:</strong> {{ error }}
-      {% endif %}
-    </div>
+    
     
 
 
   </body>
 </html>
->>>>>>> d26a2ca0ee094f3a36e42c60923b52d6f8252437

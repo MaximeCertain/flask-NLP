@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 from utils import nettoyage, getTrainFromCsv, initVectorizer, predictSentiments
 import json
+import requests
 
 app = Flask(__name__)
 
@@ -8,21 +9,27 @@ app = Flask(__name__)
 def home():
     return render_template("index.html", title='Home')
 
-@app.route("/yo",methods=['POST'])
-def predict():
+@app.route("/result",methods=['POST'])
+def result():
     user_text = request.form.get('input_text')
-    predicts = "c'est nul denis c'est nul de A à Z c'est zéro"
-    
-    print(predicts)
-    #user_text = request.form.get('input_text')
-    #print(user_text)
-    #utiliser la prédiction
+    route='/predict'
+    url='http://127.0.0.1:5000'+route
+    param={ 'input_text': user_text }
+    r=requests.post(url,data=param)
+    predicts = r.json()
+    print(predicts['pourcentage de fiabilité'])
+    return render_template("prediction.html", title='Prediction', input_text = user_text,
+    avis = predicts['Résultat'],  pourcentage = str(round(predicts['pourcentage de fiabilité'], 2)) )
 
-    return render_template("prediction.html", title='Prediction', input_text = user_text, message = predicts)
+@app.route("/trainingResults", methods=['GET'])
+def training_results():
+    return render_template("index.html", title='Home')
+
 
 @app.route("/training3",methods=['GET'])
 def training():
     return render_template("training.html", title='Training')
+
 @app.route("/result",methods=['POST'])
 def retour():
     user_text = request.form.get('input_text')

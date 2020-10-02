@@ -1,12 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
 <html>
   <head>
     <title>Prediction</title>
   </head>
   <body style="background-image: url('/static/images/clear.png');">
-
-  <h4>Donc ton texte : << {{ input_text }} >> est analysé comme cela :</h4>
-  <h4>{{ message }} </h4>
-
+  <div style="margin-top: 100px;">
+  <h4>Donc ton texte : {{ input_text }}  est analysé comme cela :</h4>
+  <h4>c'est un {{avis}} pour une fiabilité à {{pourcentage}} % </h4>
+  </div>
   </body>
-
 </html>
+{% endblock %}
