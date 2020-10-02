@@ -5,6 +5,7 @@
   <h1 >
       Please fill in your inputs here jsnfk
 
+<<<<<<< HEAD
   </h1>
   <br>
   <form action = "/prediction" method = "POST">
@@ -16,3 +17,23 @@
   {% endif %}
   
   {% endblock %}
+=======
+      <h1 >
+         Please fill in your inputs
+
+      </h1>
+      <br>
+      <form action = "/result" method = "POST">
+   <p>Text <input type = "text" name = "input_text" style="font-size:18pt;height:120px;width:200px;"/></p>
+   <p><input type = "submit" value = "submit" /></p>
+</form>
+      {% if error %}
+        <p class="error"><strong>Error:</strong> {{ error }}
+      {% endif %}
+    </div>
+    
+
+
+  </body>
+</html>
+>>>>>>> d26a2ca0ee094f3a36e42c60923b52d6f8252437
