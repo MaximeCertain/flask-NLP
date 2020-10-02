@@ -50,9 +50,6 @@ def train():
     Corpus = getTrainFromCsv("corpus.csv")
     #nettoie le corpus 
     Corpus['review_net']=Corpus['review'].apply(nettoyage)
-    #nettoie le corpus
-    #Corpus = nettoyage(Corpus)
-    #vectorizer 
     coefFiabilite = initVectorizer(Corpus)
     print(coefFiabilite)
     return jsonify({'Fiabilité de la machine': (round(coefFiabilite, 2) * 100)})
