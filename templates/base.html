@@ -1,57 +1,77 @@
-<!--html>
+<html>
   <head>
     <title>Input datas</title>
   </head>
-  <body>
 
-    <link rel="stylesheet" href="../static/styles/style.css">
-
-    <div class="container">
-        <div class="header">
-            <a href="#default" class="logo">CompanyLogo</a>
-            <div class="header-right">
-                <a class="active" href="http://127.0.0.1:5000/">Home</a>
-                <a href="http://127.0.0.1:5000/training">Entrainer un modèle</a>
-                <a href="#saisie">Afficher votre metrix de modele</a>
-            </div>
-        </div>
-
-      
-
-    </div>
-  </body>
-</html-->
-<html>
-    <head>
-        <title>Input datas</title>
-    </head>
-
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
     body {font-family: "Lato", sans-serif}
     .mySlides {display: none}
-    </style>
+  </style>
 
-    <body>
+  <body>
 
     <!-- Navbar -->
     <div class="w3-top">
-    <div class="w3-bar w3-black w3-card">
+      <div class="w3-bar w3-black w3-card">
         <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-        <a href="http://127.0.0.1:5000/" class="w3-bar-item w3-button w3-padding-large">Home</a>
-        <a href="http://127.0.0.1:5000/training" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Training</a>
-  
+        <a href="http://127.0.0.1:5000" class="w3-bar-item w3-button w3-padding-large">Formulaire</a>
+        <a href="http://127.0.0.1:5000/trainingResults" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Entrainer un modèle</a>
+        <a href="#csv" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Chargez votre CSV</a>
         </div>
+      </div>
     </div>
 
     <!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
     <div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
-    <a href="#apropos" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">A propos</a>
-    <a href="#ledilemme" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Le Dilemme</a>
-    <a href="#contact" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">CONTACT</a>
+      <a href="#apropos" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">A propos</a>
+      <a href="#ledilemme" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Le Dilemme</a>
+      <a href="#tuto" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Lancez le tuto</a>
+      <a href="#csv" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Chargez votre CSV</a>
     </div>
+
     <div id="content" style="margin:75px;">{% block content %}{% endblock %}</div>
-    </body>
-    </html>
+
+    <!-- Footer -->
+    <footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">
+      <i class="fa fa-facebook-official w3-hover-opacity"></i>
+      <i class="fa fa-instagram w3-hover-opacity"></i>
+      <i class="fa fa-snapchat w3-hover-opacity"></i>
+      <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+      <i class="fa fa-twitter w3-hover-opacity"></i>
+      <i class="fa fa-linkedin w3-hover-opacity"></i>
+      <p class="w3-medium">Copyright by the Dream Team</p>
+  
+  
+    <script>
+    // Used to toggle the menu on small screens when clicking on the menu button
+    function myFunction() {
+      var x = document.getElementById("navDemo");
+      if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+      } else { 
+        x.className = x.className.replace(" w3-show", "");
+      }
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    var modal = document.getElementById('ticketModal');
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+    </script>
+    </footer>
+
+  </body>
+</html>
+
+
+
+
+

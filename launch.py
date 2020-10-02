@@ -30,7 +30,7 @@ def training_results():
     r=requests.get(url)
     resultsTrainings = r.json()
 
-    return render_template("index.html", title='Home', resultsTrainings=
+    return render_template("train.html", title='Train', resultsTrainings=
     resultsTrainings['Fiabilité de la machine'])
 
 @app.route("/predict",methods=['POST'])

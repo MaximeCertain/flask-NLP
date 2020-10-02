@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<button class="w3-button w3-black w3-section w3-center" type="submit" value="submit"><a href="http://127.0.0.1:5000/trainingResults">Entrainer mon modèle</a></button>
+
+  {%if resultsTrainings %} 
+    La machine a été entrainée, le coéfficient de fiabilité est de 
+    <span style="font-style:bold; font-size:27px;"> 
+      {{resultsTrainings}} %
+   </span>
+  {% endif %}
+
+{% endblock %}
+
+
+  
