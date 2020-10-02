@@ -20,13 +20,15 @@
     <textarea type = "text" placeholder="Entrez votre texte ici" name = "input_text" rows="5" cols="33" />
     </textarea>
     
-    <p><input type = "submit" value = "Enregistrer" /></p>
+    <p><input type = "submit" value = "Soummettre" /></p>
   </form>
   {% if avis %}
   <div style="margin-top: 100px;">
-    <div>Le texte que vous aviez saisi :
-      <span style="fond-bold:bold;"> {{ input_text }} </span> 
+    <div>Le texte que vous aviez saisi : 
+    <br>
+      <span style="fond-bold:bold;"> " {{ input_text }} " </span> 
         est analysé comme cela :
+        <br>
     </p>
     <div>c'est un <span style="fond-bold:bold;"> {{avis}} </span> pour une fiabilité à <span style="fond-bold:bold;"> {{pourcentage}} </span> % </h4>
   </div>

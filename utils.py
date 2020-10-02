@@ -54,7 +54,6 @@ def initVectorizer(Corpus):
     return  [(cls.score(x_val,y_val)), nbWords]
 
 
-
 #on recupère les données d'entrainement depuis le csv et on les traite afin de savoir si l'avis est negatof ou positif
 def getTrainFromCsv(name):
     df=pd.read_csv(name)

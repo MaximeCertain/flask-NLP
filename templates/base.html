@@ -10,24 +10,22 @@
     body {font-family: "Lato", sans-serif}
     .mySlides {display: none}
     </style>
-    
+
     <body>
 
     <!-- Navbar -->
     <div class="w3-top">
     <div class="w3-bar w3-black w3-card">
         <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-        <a href="http://127.0.0.1:5000/" class="w3-bar-item w3-button w3-padding-large">Home</a>
+        <a href="http://127.0.0.1:5000/" class="w3-bar-item w3-button w3-padding-large">Accueil</a>
   
         </div>
     </div>
 
-    <!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
-    <div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
-    <a href="#apropos" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">A propos</a>
-    <a href="#ledilemme" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">Le Dilemme</a>
-    <a href="#contact" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">CONTACT</a>
-    </div>
-    <div id="content" style="margin:75px;">{% block content %}{% endblock %}</div>
+    <div id="content" style="margin:75px;">
+    {% block content %}
+    
+    
+    {% endblock %}</div>
     </body>
     </html>
