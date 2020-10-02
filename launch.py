@@ -18,23 +18,20 @@ def result():
     r=requests.post(url,data=param)
     predicts = r.json()
     print(predicts['pourcentage de fiabilité'])
-    return render_template("prediction.html", title='Prediction', input_text = user_text,
-    avis = predicts['Résultat'],  pourcentage = str(round(predicts['pourcentage de fiabilité'], 2)) )
+
+    return render_template("index.html", title='Prediction', input_text = user_text,
+    avis = predicts['Résultat'],  pourcentage = str(predicts['pourcentage de fiabilité']) )
+
 
 @app.route("/trainingResults", methods=['GET'])
 def training_results():
-    return render_template("index.html", title='Home')
+    route='/training'
+    url='http://127.0.0.1:5000'+route
+    r=requests.get(url)
+    resultsTrainings = r.json()
 
-
-@app.route("/training3",methods=['GET'])
-def training():
-    return render_template("training.html", title='Training')
-
-@app.route("/result",methods=['POST'])
-def retour():
-    user_text = request.form.get('input_text')
-    print(user_text)
-    return json.dumps({'text_user':user_text})
+    return render_template("index.html", title='Home', resultsTrainings=
+    resultsTrainings['Fiabilité de la machine'])
 
 @app.route("/predict",methods=['POST'])
 def predict():
@@ -58,15 +55,7 @@ def train():
     #vectorizer 
     coefFiabilite = initVectorizer(Corpus)
     print(coefFiabilite)
-    return jsonify({'Fiabilité de la machine': str(coefFiabilite)})
-
-
-@app.route("/test",methods=['POST'])
-def test():
-    user_text = request.form.get('input_text')
-    print(user_text)
-    return json.dumps({'text_user':user_text})
-
+    return jsonify({'Fiabilité de la machine': (round(coefFiabilite, 2) * 100)})
 
 if __name__ == "__main__":
     app.run()

@@ -8,12 +8,25 @@
   </h1>
   <br>
   <a href="http://127.0.0.1:5000/trainingResults">Entrainer mon modèle</a>
+  {%if resultsTrainings %} 
+    La machine a été entrainée, le coéfficient de fiabilité est de 
+    <span style="font-style:bold; font-size:27px;"> 
+      {{resultsTrainings}}
+   </span>
+  {% endif %}
   <form action = "/result" method = "POST">
     <textarea type = "text" placeholder="Entrez votre texte ici" name = "input_text" rows="5" cols="33" />
     </textarea>
     
     <p><input type = "submit" value = "submit" /></p>
   </form>
+  {% if avis %}
+  <div style="margin-top: 100px;">
+    <h4>Donc ton texte : {{ input_text }}  est analysé comme cela :</h4>
+    <h4>c'est un {{avis}} pour une fiabilité à {{pourcentage}} % </h4>
+  </div>
+  {% endif %}
+
   {% if error %}
     <p class="error"><strong>Error:</strong> {{ error }}
   {% endif %}
